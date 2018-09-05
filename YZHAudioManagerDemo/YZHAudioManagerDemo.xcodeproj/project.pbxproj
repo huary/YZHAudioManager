@@ -1,0 +1,595 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1C01F967213F66CA00E080EE /* YZHAudioRecordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C01F966213F66CA00E080EE /* YZHAudioRecordView.m */; };
+		1C01F96D213F734B00E080EE /* YZHAudioController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C01F96C213F734B00E080EE /* YZHAudioController.m */; };
+		1C4C2A0B213FB05B00EE464B /* record_ripple@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C4C2A03213FB05B00EE464B /* record_ripple@3x.png */; };
+		1C4C2A0C213FB05B00EE464B /* release_to_cancel@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C4C2A04213FB05B00EE464B /* release_to_cancel@3x.png */; };
+		1C4C2A0D213FB05B00EE464B /* record_ripple@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C4C2A05213FB05B00EE464B /* record_ripple@2x.png */; };
+		1C4C2A0E213FB05B00EE464B /* record_too_short@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C4C2A06213FB05B00EE464B /* record_too_short@3x.png */; };
+		1C4C2A0F213FB05B00EE464B /* record@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C4C2A07213FB05B00EE464B /* record@2x.png */; };
+		1C4C2A10213FB05B00EE464B /* release_to_cancel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C4C2A08213FB05B00EE464B /* release_to_cancel@2x.png */; };
+		1C4C2A11213FB05B00EE464B /* record@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C4C2A09213FB05B00EE464B /* record@3x.png */; };
+		1C4C2A12213FB05B00EE464B /* record_too_short@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C4C2A0A213FB05B00EE464B /* record_too_short@2x.png */; };
+		1CB1422E21404892007CEBE7 /* YZHUIAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CB1422D21404892007CEBE7 /* YZHUIAlertView.m */; };
+		1CDB34C6213E139B0002FB45 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CDB34C5213E139B0002FB45 /* AppDelegate.m */; };
+		1CDB34C9213E139B0002FB45 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CDB34C8213E139B0002FB45 /* ViewController.m */; };
+		1CDB34CC213E139B0002FB45 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1CDB34CA213E139B0002FB45 /* Main.storyboard */; };
+		1CDB34CE213E139B0002FB45 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1CDB34CD213E139B0002FB45 /* Assets.xcassets */; };
+		1CDB34D1213E139B0002FB45 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1CDB34CF213E139B0002FB45 /* LaunchScreen.storyboard */; };
+		1CDB34D4213E139B0002FB45 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CDB34D3213E139B0002FB45 /* main.m */; };
+		1CDB34F2213E14330002FB45 /* YZHAudioManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CDB34DC213E14320002FB45 /* YZHAudioManager.m */; };
+		1CDB34F7213E14330002FB45 /* YZHUIButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CDB34EA213E14320002FB45 /* YZHUIButton.m */; };
+		1CDB34F8213E14330002FB45 /* NSKeyboardManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CDB34ED213E14320002FB45 /* NSKeyboardManager.m */; };
+		1CDB34F9213E14330002FB45 /* YZHUITextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CDB34F1213E14320002FB45 /* YZHUITextView.m */; };
+		1CDB351E213E15DF0002FB45 /* NSObject+KVO.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CDB34FE213E15DF0002FB45 /* NSObject+KVO.m */; };
+		1CDB351F213E15DF0002FB45 /* NSObject+WeakAssociationObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CDB3500213E15DF0002FB45 /* NSObject+WeakAssociationObject.m */; };
+		1CDB3520213E15DF0002FB45 /* NSWeakProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CDB3502213E15DF0002FB45 /* NSWeakProxy.m */; };
+		1CDB3521213E15DF0002FB45 /* UIBezierPath+CornerRadius.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CDB3505213E15DF0002FB45 /* UIBezierPath+CornerRadius.m */; };
+		1CDB3522213E15DF0002FB45 /* UIButton+BGColorForState.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CDB3507213E15DF0002FB45 /* UIButton+BGColorForState.m */; };
+		1CDB3523213E15DF0002FB45 /* UIGestureRecognizer+YZHState.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CDB3509213E15DF0002FB45 /* UIGestureRecognizer+YZHState.m */; };
+		1CDB3524213E15DF0002FB45 /* UIImage+Orientation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CDB350B213E15DF0002FB45 /* UIImage+Orientation.m */; };
+		1CDB3525213E15DF0002FB45 /* UIImage+TintColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CDB350D213E15DF0002FB45 /* UIImage+TintColor.m */; };
+		1CDB3526213E15DF0002FB45 /* UIImagePickerController+Orientation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CDB350F213E15DF0002FB45 /* UIImagePickerController+Orientation.m */; };
+		1CDB3527213E15DF0002FB45 /* UIImageView+ContentSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CDB3511213E15DF0002FB45 /* UIImageView+ContentSize.m */; };
+		1CDB3528213E15DF0002FB45 /* UIImageView+TouchEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CDB3513213E15DF0002FB45 /* UIImageView+TouchEvent.m */; };
+		1CDB3529213E15DF0002FB45 /* UITableViewCell+NSIndexPath.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CDB3515213E15DF0002FB45 /* UITableViewCell+NSIndexPath.m */; };
+		1CDB352A213E15DF0002FB45 /* UITableViewCell+Operation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CDB3517213E15DF0002FB45 /* UITableViewCell+Operation.m */; };
+		1CDB352B213E15DF0002FB45 /* UITableViewCell+SeparatorLineInset.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CDB3519213E15DF0002FB45 /* UITableViewCell+SeparatorLineInset.m */; };
+		1CDB352C213E15DF0002FB45 /* UIView+UIGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CDB351B213E15DF0002FB45 /* UIView+UIGestureRecognizer.m */; };
+		1CDB352D213E15DF0002FB45 /* UIView+UITableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CDB351D213E15DF0002FB45 /* UIView+UITableViewCell.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1C01F965213F66CA00E080EE /* YZHAudioRecordView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZHAudioRecordView.h; sourceTree = "<group>"; };
+		1C01F966213F66CA00E080EE /* YZHAudioRecordView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZHAudioRecordView.m; sourceTree = "<group>"; };
+		1C01F96B213F734B00E080EE /* YZHAudioController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZHAudioController.h; sourceTree = "<group>"; };
+		1C01F96C213F734B00E080EE /* YZHAudioController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZHAudioController.m; sourceTree = "<group>"; };
+		1C4C2A03213FB05B00EE464B /* record_ripple@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "record_ripple@3x.png"; sourceTree = "<group>"; };
+		1C4C2A04213FB05B00EE464B /* release_to_cancel@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "release_to_cancel@3x.png"; sourceTree = "<group>"; };
+		1C4C2A05213FB05B00EE464B /* record_ripple@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "record_ripple@2x.png"; sourceTree = "<group>"; };
+		1C4C2A06213FB05B00EE464B /* record_too_short@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "record_too_short@3x.png"; sourceTree = "<group>"; };
+		1C4C2A07213FB05B00EE464B /* record@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "record@2x.png"; sourceTree = "<group>"; };
+		1C4C2A08213FB05B00EE464B /* release_to_cancel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "release_to_cancel@2x.png"; sourceTree = "<group>"; };
+		1C4C2A09213FB05B00EE464B /* record@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "record@3x.png"; sourceTree = "<group>"; };
+		1C4C2A0A213FB05B00EE464B /* record_too_short@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "record_too_short@2x.png"; sourceTree = "<group>"; };
+		1CB1422C21404892007CEBE7 /* YZHUIAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZHUIAlertView.h; sourceTree = "<group>"; };
+		1CB1422D21404892007CEBE7 /* YZHUIAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZHUIAlertView.m; sourceTree = "<group>"; };
+		1CDB34C1213E139B0002FB45 /* YZHAudioManagerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YZHAudioManagerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1CDB34C4213E139B0002FB45 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		1CDB34C5213E139B0002FB45 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		1CDB34C7213E139B0002FB45 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		1CDB34C8213E139B0002FB45 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		1CDB34CB213E139B0002FB45 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		1CDB34CD213E139B0002FB45 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1CDB34D0213E139B0002FB45 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		1CDB34D2213E139B0002FB45 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1CDB34D3213E139B0002FB45 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		1CDB34DB213E14320002FB45 /* YZHAudioManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZHAudioManager.h; sourceTree = "<group>"; };
+		1CDB34DC213E14320002FB45 /* YZHAudioManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZHAudioManager.m; sourceTree = "<group>"; };
+		1CDB34E7213E14320002FB45 /* Macro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Macro.h; sourceTree = "<group>"; };
+		1CDB34E9213E14320002FB45 /* YZHUIButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZHUIButton.h; sourceTree = "<group>"; };
+		1CDB34EA213E14320002FB45 /* YZHUIButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZHUIButton.m; sourceTree = "<group>"; };
+		1CDB34EC213E14320002FB45 /* NSKeyboardManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSKeyboardManager.h; sourceTree = "<group>"; };
+		1CDB34ED213E14320002FB45 /* NSKeyboardManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSKeyboardManager.m; sourceTree = "<group>"; };
+		1CDB34EE213E14320002FB45 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		1CDB34F0213E14320002FB45 /* YZHUITextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZHUITextView.h; sourceTree = "<group>"; };
+		1CDB34F1213E14320002FB45 /* YZHUITextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZHUITextView.m; sourceTree = "<group>"; };
+		1CDB34FD213E15DF0002FB45 /* NSObject+KVO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+KVO.h"; sourceTree = "<group>"; };
+		1CDB34FE213E15DF0002FB45 /* NSObject+KVO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+KVO.m"; sourceTree = "<group>"; };
+		1CDB34FF213E15DF0002FB45 /* NSObject+WeakAssociationObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+WeakAssociationObject.h"; sourceTree = "<group>"; };
+		1CDB3500213E15DF0002FB45 /* NSObject+WeakAssociationObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+WeakAssociationObject.m"; sourceTree = "<group>"; };
+		1CDB3501213E15DF0002FB45 /* NSWeakProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSWeakProxy.h; sourceTree = "<group>"; };
+		1CDB3502213E15DF0002FB45 /* NSWeakProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSWeakProxy.m; sourceTree = "<group>"; };
+		1CDB3504213E15DF0002FB45 /* UIBezierPath+CornerRadius.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBezierPath+CornerRadius.h"; sourceTree = "<group>"; };
+		1CDB3505213E15DF0002FB45 /* UIBezierPath+CornerRadius.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBezierPath+CornerRadius.m"; sourceTree = "<group>"; };
+		1CDB3506213E15DF0002FB45 /* UIButton+BGColorForState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+BGColorForState.h"; sourceTree = "<group>"; };
+		1CDB3507213E15DF0002FB45 /* UIButton+BGColorForState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+BGColorForState.m"; sourceTree = "<group>"; };
+		1CDB3508213E15DF0002FB45 /* UIGestureRecognizer+YZHState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIGestureRecognizer+YZHState.h"; sourceTree = "<group>"; };
+		1CDB3509213E15DF0002FB45 /* UIGestureRecognizer+YZHState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIGestureRecognizer+YZHState.m"; sourceTree = "<group>"; };
+		1CDB350A213E15DF0002FB45 /* UIImage+Orientation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Orientation.h"; sourceTree = "<group>"; };
+		1CDB350B213E15DF0002FB45 /* UIImage+Orientation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Orientation.m"; sourceTree = "<group>"; };
+		1CDB350C213E15DF0002FB45 /* UIImage+TintColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+TintColor.h"; sourceTree = "<group>"; };
+		1CDB350D213E15DF0002FB45 /* UIImage+TintColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+TintColor.m"; sourceTree = "<group>"; };
+		1CDB350E213E15DF0002FB45 /* UIImagePickerController+Orientation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImagePickerController+Orientation.h"; sourceTree = "<group>"; };
+		1CDB350F213E15DF0002FB45 /* UIImagePickerController+Orientation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImagePickerController+Orientation.m"; sourceTree = "<group>"; };
+		1CDB3510213E15DF0002FB45 /* UIImageView+ContentSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+ContentSize.h"; sourceTree = "<group>"; };
+		1CDB3511213E15DF0002FB45 /* UIImageView+ContentSize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+ContentSize.m"; sourceTree = "<group>"; };
+		1CDB3512213E15DF0002FB45 /* UIImageView+TouchEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+TouchEvent.h"; sourceTree = "<group>"; };
+		1CDB3513213E15DF0002FB45 /* UIImageView+TouchEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+TouchEvent.m"; sourceTree = "<group>"; };
+		1CDB3514213E15DF0002FB45 /* UITableViewCell+NSIndexPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableViewCell+NSIndexPath.h"; sourceTree = "<group>"; };
+		1CDB3515213E15DF0002FB45 /* UITableViewCell+NSIndexPath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableViewCell+NSIndexPath.m"; sourceTree = "<group>"; };
+		1CDB3516213E15DF0002FB45 /* UITableViewCell+Operation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableViewCell+Operation.h"; sourceTree = "<group>"; };
+		1CDB3517213E15DF0002FB45 /* UITableViewCell+Operation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableViewCell+Operation.m"; sourceTree = "<group>"; };
+		1CDB3518213E15DF0002FB45 /* UITableViewCell+SeparatorLineInset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableViewCell+SeparatorLineInset.h"; sourceTree = "<group>"; };
+		1CDB3519213E15DF0002FB45 /* UITableViewCell+SeparatorLineInset.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableViewCell+SeparatorLineInset.m"; sourceTree = "<group>"; };
+		1CDB351A213E15DF0002FB45 /* UIView+UIGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+UIGestureRecognizer.h"; sourceTree = "<group>"; };
+		1CDB351B213E15DF0002FB45 /* UIView+UIGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+UIGestureRecognizer.m"; sourceTree = "<group>"; };
+		1CDB351C213E15DF0002FB45 /* UIView+UITableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+UITableViewCell.h"; sourceTree = "<group>"; };
+		1CDB351D213E15DF0002FB45 /* UIView+UITableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+UITableViewCell.m"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1CDB34BE213E139B0002FB45 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1C01F964213F668400E080EE /* UIView */ = {
+			isa = PBXGroup;
+			children = (
+				1C01F965213F66CA00E080EE /* YZHAudioRecordView.h */,
+				1C01F966213F66CA00E080EE /* YZHAudioRecordView.m */,
+			);
+			path = UIView;
+			sourceTree = "<group>";
+		};
+		1C01F969213F731500E080EE /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				1C01F96B213F734B00E080EE /* YZHAudioController.h */,
+				1C01F96C213F734B00E080EE /* YZHAudioController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		1CB1422B21404892007CEBE7 /* YZHUIAlertView */ = {
+			isa = PBXGroup;
+			children = (
+				1CB1422C21404892007CEBE7 /* YZHUIAlertView.h */,
+				1CB1422D21404892007CEBE7 /* YZHUIAlertView.m */,
+			);
+			path = YZHUIAlertView;
+			sourceTree = "<group>";
+		};
+		1CDB34B8213E139B0002FB45 = {
+			isa = PBXGroup;
+			children = (
+				1CDB34C3213E139B0002FB45 /* YZHAudioManagerDemo */,
+				1CDB34C2213E139B0002FB45 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		1CDB34C2213E139B0002FB45 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1CDB34C1213E139B0002FB45 /* YZHAudioManagerDemo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1CDB34C3213E139B0002FB45 /* YZHAudioManagerDemo */ = {
+			isa = PBXGroup;
+			children = (
+				1CB1422B21404892007CEBE7 /* YZHUIAlertView */,
+				1CDB352E213E16760002FB45 /* resources */,
+				1CDB34FB213E15DF0002FB45 /* Base(基础类别) */,
+				1CDB34E7213E14320002FB45 /* Macro.h */,
+				1CDB34EB213E14320002FB45 /* NSKeyboardManager */,
+				1CDB34EE213E14320002FB45 /* PrefixHeader.pch */,
+				1CDB34DA213E14320002FB45 /* YZHAudioManager */,
+				1CDB34E8213E14320002FB45 /* YZHUIButton */,
+				1CDB34EF213E14320002FB45 /* YZHUITextView */,
+				1CDB34C4213E139B0002FB45 /* AppDelegate.h */,
+				1CDB34C5213E139B0002FB45 /* AppDelegate.m */,
+				1CDB34C7213E139B0002FB45 /* ViewController.h */,
+				1CDB34C8213E139B0002FB45 /* ViewController.m */,
+				1CDB34CA213E139B0002FB45 /* Main.storyboard */,
+				1CDB34CD213E139B0002FB45 /* Assets.xcassets */,
+				1CDB34CF213E139B0002FB45 /* LaunchScreen.storyboard */,
+				1CDB34D2213E139B0002FB45 /* Info.plist */,
+				1CDB34D3213E139B0002FB45 /* main.m */,
+			);
+			path = YZHAudioManagerDemo;
+			sourceTree = "<group>";
+		};
+		1CDB34DA213E14320002FB45 /* YZHAudioManager */ = {
+			isa = PBXGroup;
+			children = (
+				1C01F969213F731500E080EE /* Controller */,
+				1C01F964213F668400E080EE /* UIView */,
+				1CDB34DB213E14320002FB45 /* YZHAudioManager.h */,
+				1CDB34DC213E14320002FB45 /* YZHAudioManager.m */,
+			);
+			path = YZHAudioManager;
+			sourceTree = "<group>";
+		};
+		1CDB34E8213E14320002FB45 /* YZHUIButton */ = {
+			isa = PBXGroup;
+			children = (
+				1CDB34E9213E14320002FB45 /* YZHUIButton.h */,
+				1CDB34EA213E14320002FB45 /* YZHUIButton.m */,
+			);
+			path = YZHUIButton;
+			sourceTree = "<group>";
+		};
+		1CDB34EB213E14320002FB45 /* NSKeyboardManager */ = {
+			isa = PBXGroup;
+			children = (
+				1CDB34EC213E14320002FB45 /* NSKeyboardManager.h */,
+				1CDB34ED213E14320002FB45 /* NSKeyboardManager.m */,
+			);
+			path = NSKeyboardManager;
+			sourceTree = "<group>";
+		};
+		1CDB34EF213E14320002FB45 /* YZHUITextView */ = {
+			isa = PBXGroup;
+			children = (
+				1CDB34F0213E14320002FB45 /* YZHUITextView.h */,
+				1CDB34F1213E14320002FB45 /* YZHUITextView.m */,
+			);
+			path = YZHUITextView;
+			sourceTree = "<group>";
+		};
+		1CDB34FB213E15DF0002FB45 /* Base(基础类别) */ = {
+			isa = PBXGroup;
+			children = (
+				1CDB34FC213E15DF0002FB45 /* Foundation */,
+				1CDB3503213E15DF0002FB45 /* UIKit */,
+			);
+			path = "Base(基础类别)";
+			sourceTree = "<group>";
+		};
+		1CDB34FC213E15DF0002FB45 /* Foundation */ = {
+			isa = PBXGroup;
+			children = (
+				1CDB34FD213E15DF0002FB45 /* NSObject+KVO.h */,
+				1CDB34FE213E15DF0002FB45 /* NSObject+KVO.m */,
+				1CDB34FF213E15DF0002FB45 /* NSObject+WeakAssociationObject.h */,
+				1CDB3500213E15DF0002FB45 /* NSObject+WeakAssociationObject.m */,
+				1CDB3501213E15DF0002FB45 /* NSWeakProxy.h */,
+				1CDB3502213E15DF0002FB45 /* NSWeakProxy.m */,
+			);
+			path = Foundation;
+			sourceTree = "<group>";
+		};
+		1CDB3503213E15DF0002FB45 /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				1CDB3504213E15DF0002FB45 /* UIBezierPath+CornerRadius.h */,
+				1CDB3505213E15DF0002FB45 /* UIBezierPath+CornerRadius.m */,
+				1CDB3506213E15DF0002FB45 /* UIButton+BGColorForState.h */,
+				1CDB3507213E15DF0002FB45 /* UIButton+BGColorForState.m */,
+				1CDB3508213E15DF0002FB45 /* UIGestureRecognizer+YZHState.h */,
+				1CDB3509213E15DF0002FB45 /* UIGestureRecognizer+YZHState.m */,
+				1CDB350A213E15DF0002FB45 /* UIImage+Orientation.h */,
+				1CDB350B213E15DF0002FB45 /* UIImage+Orientation.m */,
+				1CDB350C213E15DF0002FB45 /* UIImage+TintColor.h */,
+				1CDB350D213E15DF0002FB45 /* UIImage+TintColor.m */,
+				1CDB350E213E15DF0002FB45 /* UIImagePickerController+Orientation.h */,
+				1CDB350F213E15DF0002FB45 /* UIImagePickerController+Orientation.m */,
+				1CDB3510213E15DF0002FB45 /* UIImageView+ContentSize.h */,
+				1CDB3511213E15DF0002FB45 /* UIImageView+ContentSize.m */,
+				1CDB3512213E15DF0002FB45 /* UIImageView+TouchEvent.h */,
+				1CDB3513213E15DF0002FB45 /* UIImageView+TouchEvent.m */,
+				1CDB3514213E15DF0002FB45 /* UITableViewCell+NSIndexPath.h */,
+				1CDB3515213E15DF0002FB45 /* UITableViewCell+NSIndexPath.m */,
+				1CDB3516213E15DF0002FB45 /* UITableViewCell+Operation.h */,
+				1CDB3517213E15DF0002FB45 /* UITableViewCell+Operation.m */,
+				1CDB3518213E15DF0002FB45 /* UITableViewCell+SeparatorLineInset.h */,
+				1CDB3519213E15DF0002FB45 /* UITableViewCell+SeparatorLineInset.m */,
+				1CDB351A213E15DF0002FB45 /* UIView+UIGestureRecognizer.h */,
+				1CDB351B213E15DF0002FB45 /* UIView+UIGestureRecognizer.m */,
+				1CDB351C213E15DF0002FB45 /* UIView+UITableViewCell.h */,
+				1CDB351D213E15DF0002FB45 /* UIView+UITableViewCell.m */,
+			);
+			path = UIKit;
+			sourceTree = "<group>";
+		};
+		1CDB352E213E16760002FB45 /* resources */ = {
+			isa = PBXGroup;
+			children = (
+				1C4C2A05213FB05B00EE464B /* record_ripple@2x.png */,
+				1C4C2A03213FB05B00EE464B /* record_ripple@3x.png */,
+				1C4C2A0A213FB05B00EE464B /* record_too_short@2x.png */,
+				1C4C2A06213FB05B00EE464B /* record_too_short@3x.png */,
+				1C4C2A07213FB05B00EE464B /* record@2x.png */,
+				1C4C2A09213FB05B00EE464B /* record@3x.png */,
+				1C4C2A08213FB05B00EE464B /* release_to_cancel@2x.png */,
+				1C4C2A04213FB05B00EE464B /* release_to_cancel@3x.png */,
+			);
+			path = resources;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1CDB34C0213E139B0002FB45 /* YZHAudioManagerDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1CDB34D7213E139B0002FB45 /* Build configuration list for PBXNativeTarget "YZHAudioManagerDemo" */;
+			buildPhases = (
+				1CDB34BD213E139B0002FB45 /* Sources */,
+				1CDB34BE213E139B0002FB45 /* Frameworks */,
+				1CDB34BF213E139B0002FB45 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = YZHAudioManagerDemo;
+			productName = YZHAudioManagerDemo;
+			productReference = 1CDB34C1213E139B0002FB45 /* YZHAudioManagerDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1CDB34B9213E139B0002FB45 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0910;
+				ORGANIZATIONNAME = yuan;
+				TargetAttributes = {
+					1CDB34C0213E139B0002FB45 = {
+						CreatedOnToolsVersion = 9.1;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 1CDB34BC213E139B0002FB45 /* Build configuration list for PBXProject "YZHAudioManagerDemo" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 1CDB34B8213E139B0002FB45;
+			productRefGroup = 1CDB34C2213E139B0002FB45 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1CDB34C0213E139B0002FB45 /* YZHAudioManagerDemo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1CDB34BF213E139B0002FB45 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1C4C2A11213FB05B00EE464B /* record@3x.png in Resources */,
+				1C4C2A0C213FB05B00EE464B /* release_to_cancel@3x.png in Resources */,
+				1C4C2A0F213FB05B00EE464B /* record@2x.png in Resources */,
+				1C4C2A12213FB05B00EE464B /* record_too_short@2x.png in Resources */,
+				1C4C2A0D213FB05B00EE464B /* record_ripple@2x.png in Resources */,
+				1C4C2A0B213FB05B00EE464B /* record_ripple@3x.png in Resources */,
+				1CDB34D1213E139B0002FB45 /* LaunchScreen.storyboard in Resources */,
+				1CDB34CE213E139B0002FB45 /* Assets.xcassets in Resources */,
+				1C4C2A10213FB05B00EE464B /* release_to_cancel@2x.png in Resources */,
+				1C4C2A0E213FB05B00EE464B /* record_too_short@3x.png in Resources */,
+				1CDB34CC213E139B0002FB45 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1CDB34BD213E139B0002FB45 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1CDB3524213E15DF0002FB45 /* UIImage+Orientation.m in Sources */,
+				1CDB34F2213E14330002FB45 /* YZHAudioManager.m in Sources */,
+				1C01F967213F66CA00E080EE /* YZHAudioRecordView.m in Sources */,
+				1CDB3520213E15DF0002FB45 /* NSWeakProxy.m in Sources */,
+				1CDB34F9213E14330002FB45 /* YZHUITextView.m in Sources */,
+				1CDB34C9213E139B0002FB45 /* ViewController.m in Sources */,
+				1CDB3526213E15DF0002FB45 /* UIImagePickerController+Orientation.m in Sources */,
+				1CDB34D4213E139B0002FB45 /* main.m in Sources */,
+				1C01F96D213F734B00E080EE /* YZHAudioController.m in Sources */,
+				1CDB3525213E15DF0002FB45 /* UIImage+TintColor.m in Sources */,
+				1CDB34C6213E139B0002FB45 /* AppDelegate.m in Sources */,
+				1CDB3521213E15DF0002FB45 /* UIBezierPath+CornerRadius.m in Sources */,
+				1CDB352D213E15DF0002FB45 /* UIView+UITableViewCell.m in Sources */,
+				1CDB3528213E15DF0002FB45 /* UIImageView+TouchEvent.m in Sources */,
+				1CDB3527213E15DF0002FB45 /* UIImageView+ContentSize.m in Sources */,
+				1CDB3529213E15DF0002FB45 /* UITableViewCell+NSIndexPath.m in Sources */,
+				1CDB3522213E15DF0002FB45 /* UIButton+BGColorForState.m in Sources */,
+				1CDB351F213E15DF0002FB45 /* NSObject+WeakAssociationObject.m in Sources */,
+				1CDB3523213E15DF0002FB45 /* UIGestureRecognizer+YZHState.m in Sources */,
+				1CB1422E21404892007CEBE7 /* YZHUIAlertView.m in Sources */,
+				1CDB352A213E15DF0002FB45 /* UITableViewCell+Operation.m in Sources */,
+				1CDB352C213E15DF0002FB45 /* UIView+UIGestureRecognizer.m in Sources */,
+				1CDB351E213E15DF0002FB45 /* NSObject+KVO.m in Sources */,
+				1CDB352B213E15DF0002FB45 /* UITableViewCell+SeparatorLineInset.m in Sources */,
+				1CDB34F8213E14330002FB45 /* NSKeyboardManager.m in Sources */,
+				1CDB34F7213E14330002FB45 /* YZHUIButton.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		1CDB34CA213E139B0002FB45 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1CDB34CB213E139B0002FB45 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		1CDB34CF213E139B0002FB45 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1CDB34D0213E139B0002FB45 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		1CDB34D5213E139B0002FB45 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		1CDB34D6213E139B0002FB45 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		1CDB34D8213E139B0002FB45 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = QSXU259F8V;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = YZHAudioManagerDemo/PrefixHeader.pch;
+				INFOPLIST_FILE = YZHAudioManagerDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = yuan.YZHAudioManagerDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		1CDB34D9213E139B0002FB45 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = QSXU259F8V;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = YZHAudioManagerDemo/PrefixHeader.pch;
+				INFOPLIST_FILE = YZHAudioManagerDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = yuan.YZHAudioManagerDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1CDB34BC213E139B0002FB45 /* Build configuration list for PBXProject "YZHAudioManagerDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1CDB34D5213E139B0002FB45 /* Debug */,
+				1CDB34D6213E139B0002FB45 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1CDB34D7213E139B0002FB45 /* Build configuration list for PBXNativeTarget "YZHAudioManagerDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1CDB34D8213E139B0002FB45 /* Debug */,
+				1CDB34D9213E139B0002FB45 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 1CDB34B9213E139B0002FB45 /* Project object */;
+}
