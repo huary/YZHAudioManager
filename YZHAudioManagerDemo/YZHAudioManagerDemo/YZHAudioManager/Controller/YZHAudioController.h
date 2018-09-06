@@ -18,6 +18,10 @@ typedef NS_ENUM(NSInteger, YZHAudioRecordState)
     YZHAudioRecordStateEnd          = 5,
 };
 
+@class YZHAudioController;
+
+typedef void(^YZHAudioControllerCompletionBlock)(YZHAudioController *audioController);
+
 
 @interface YZHAudioController : NSObject
 
@@ -26,6 +30,10 @@ typedef NS_ENUM(NSInteger, YZHAudioRecordState)
 
 /* <#name#> */
 @property (nonatomic, assign) NSTimeInterval maxRecordDuration;
+
+/* <#注释#> */
+@property (nonatomic, copy) YZHAudioControllerCompletionBlock completionBlock;
+
 
 -(void)showWithState:(YZHAudioRecordState)state title:(NSString*)title;
 

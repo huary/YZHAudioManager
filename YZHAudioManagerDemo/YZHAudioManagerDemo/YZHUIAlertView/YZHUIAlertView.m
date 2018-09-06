@@ -587,9 +587,6 @@ typedef void(^YZHUIAlertActionCellContentViewChangeSizeBlock)(YZHUIAlertActionCe
 //cover
 @property (nonatomic, strong) UIButton *cover;
 
-//effectview
-@property (nonatomic, strong) UIView *effectView;
-
 // tipsButton
 @property (nonatomic, strong) YZHUIButton *tipsButton;
 
@@ -618,6 +615,8 @@ typedef void(^YZHUIAlertActionCellContentViewChangeSizeBlock)(YZHUIAlertActionCe
 @end
 
 @implementation YZHUIAlertView
+
+@synthesize effectView = _effectView;
 
 -(instancetype)initWithTitle:(id)alertTitle alertViewStyle:(YZHUIAlertViewStyle)alertViewStyle
 {
@@ -1766,17 +1765,17 @@ typedef void(^YZHUIAlertActionCellContentViewChangeSizeBlock)(YZHUIAlertActionCe
 -(void)_registerNotification:(BOOL)regist
 {
     if (regist) {
-        _keyboardManager = [[NSKeyboardManager alloc] init];
+        _keyboardManager = [[YZHKeyboardManager alloc] init];
         self.keyboardManager.relatedShiftView = self;
         self.keyboardManager.firstResponderView = self;
-        self.keyboardManager.keyboardTopToResponder = 5;
+        self.keyboardManager.keyboardMinTopToResponder = 5;
         
         if (YZHUIALERT_VIEW_STYLE_IS_SHEET(self.alertViewStyle)) {
             WEAK_SELF(weakSelf);
-            self.keyboardManager.willShowBlock = ^(NSKeyboardManager *keyboardManager, NSNotification *keyboardNotification) {
+            self.keyboardManager.willShowBlock = ^(YZHKeyboardManager *keyboardManager, NSNotification *keyboardNotification) {
                 [weakSelf _adjustSheetLastCellWithKeyboardNotification:keyboardNotification];
             };
-            self.keyboardManager.willHideBlock = ^(NSKeyboardManager *keyboardManager, NSNotification *keyboardNotification) {
+            self.keyboardManager.willHideBlock = ^(YZHKeyboardManager *keyboardManager, NSNotification *keyboardNotification) {
                 [weakSelf _adjustSheetLastCellWithKeyboardNotification:keyboardNotification];
             };
 
@@ -1798,7 +1797,7 @@ typedef void(^YZHUIAlertActionCellContentViewChangeSizeBlock)(YZHUIAlertActionCe
     CGFloat maxY = 0;
     if ([notification.name isEqualToString:UIKeyboardWillShowNotification]) {
         CGRect frame = [[notification.userInfo objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
-        maxY = frame.size.height + self.keyboardManager.keyboardTopToResponder;
+        maxY = frame.size.height + self.keyboardManager.keyboardMinTopToResponder;
     }
     else if ([notification.name isEqualToString:UIKeyboardWillHideNotification]) {
         maxY = self.showInView.bounds.size.height;

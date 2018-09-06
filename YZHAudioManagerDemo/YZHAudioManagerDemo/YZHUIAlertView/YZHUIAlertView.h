@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "YZHUITextView.h"
-#import "NSKeyboardManager.h"
+#import "YZHKeyboardManager.h"
 
 typedef NS_ENUM(NSInteger, YZHUIAlertViewStyle)
 {
@@ -185,6 +185,11 @@ typedef BOOL(^YZHUIAlertActionBlock)(YZHAlertActionModel *actionModel, NSDiction
 @property (nonatomic, copy) UIColor *coverColor;
 @property (nonatomic, assign) CGFloat coverAlpha;
 
+//effectview
+@property (nonatomic, strong, readonly) UIView *effectView;
+
+@property (nonatomic, strong, readonly) YZHKeyboardManager *keyboardManager;
+
 @property (nonatomic, copy) YZHUIAlertActionBlock coverActionBlock;
 /*
  *在YZHUIAlertViewStyleAlertForce的style的情况下没有提供action的时候，控件会自动生成action，这个action的block需要开发者指定如下
@@ -205,8 +210,6 @@ typedef BOOL(^YZHUIAlertActionBlock)(YZHAlertActionModel *actionModel, NSDiction
  *为了保险起见使用weak(这里支持使用strong，不会出现循环引用问题)
 */
 @property (nonatomic, strong) UIView *customContentAlertView;
-
-@property (nonatomic, strong, readonly) NSKeyboardManager *keyboardManager;
 
 -(instancetype)initWithTitle:(id)alertTitle alertViewStyle:(YZHUIAlertViewStyle)alertViewStyle;
 

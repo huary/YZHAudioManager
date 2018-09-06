@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1C01F967213F66CA00E080EE /* YZHAudioRecordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C01F966213F66CA00E080EE /* YZHAudioRecordView.m */; };
 		1C01F96D213F734B00E080EE /* YZHAudioController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C01F96C213F734B00E080EE /* YZHAudioController.m */; };
+		1C07DB342140C1BB00F4C337 /* YZHKeyboardManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C07DB332140C1BB00F4C337 /* YZHKeyboardManager.m */; };
 		1C4C2A0B213FB05B00EE464B /* record_ripple@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C4C2A03213FB05B00EE464B /* record_ripple@3x.png */; };
 		1C4C2A0C213FB05B00EE464B /* release_to_cancel@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C4C2A04213FB05B00EE464B /* release_to_cancel@3x.png */; };
 		1C4C2A0D213FB05B00EE464B /* record_ripple@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C4C2A05213FB05B00EE464B /* record_ripple@2x.png */; };
@@ -26,7 +27,6 @@
 		1CDB34D4213E139B0002FB45 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CDB34D3213E139B0002FB45 /* main.m */; };
 		1CDB34F2213E14330002FB45 /* YZHAudioManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CDB34DC213E14320002FB45 /* YZHAudioManager.m */; };
 		1CDB34F7213E14330002FB45 /* YZHUIButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CDB34EA213E14320002FB45 /* YZHUIButton.m */; };
-		1CDB34F8213E14330002FB45 /* NSKeyboardManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CDB34ED213E14320002FB45 /* NSKeyboardManager.m */; };
 		1CDB34F9213E14330002FB45 /* YZHUITextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CDB34F1213E14320002FB45 /* YZHUITextView.m */; };
 		1CDB351E213E15DF0002FB45 /* NSObject+KVO.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CDB34FE213E15DF0002FB45 /* NSObject+KVO.m */; };
 		1CDB351F213E15DF0002FB45 /* NSObject+WeakAssociationObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CDB3500213E15DF0002FB45 /* NSObject+WeakAssociationObject.m */; };
@@ -51,6 +51,8 @@
 		1C01F966213F66CA00E080EE /* YZHAudioRecordView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZHAudioRecordView.m; sourceTree = "<group>"; };
 		1C01F96B213F734B00E080EE /* YZHAudioController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZHAudioController.h; sourceTree = "<group>"; };
 		1C01F96C213F734B00E080EE /* YZHAudioController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZHAudioController.m; sourceTree = "<group>"; };
+		1C07DB322140C1BB00F4C337 /* YZHKeyboardManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZHKeyboardManager.h; sourceTree = "<group>"; };
+		1C07DB332140C1BB00F4C337 /* YZHKeyboardManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZHKeyboardManager.m; sourceTree = "<group>"; };
 		1C4C2A03213FB05B00EE464B /* record_ripple@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "record_ripple@3x.png"; sourceTree = "<group>"; };
 		1C4C2A04213FB05B00EE464B /* release_to_cancel@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "release_to_cancel@3x.png"; sourceTree = "<group>"; };
 		1C4C2A05213FB05B00EE464B /* record_ripple@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "record_ripple@2x.png"; sourceTree = "<group>"; };
@@ -76,8 +78,6 @@
 		1CDB34E7213E14320002FB45 /* Macro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Macro.h; sourceTree = "<group>"; };
 		1CDB34E9213E14320002FB45 /* YZHUIButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZHUIButton.h; sourceTree = "<group>"; };
 		1CDB34EA213E14320002FB45 /* YZHUIButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZHUIButton.m; sourceTree = "<group>"; };
-		1CDB34EC213E14320002FB45 /* NSKeyboardManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSKeyboardManager.h; sourceTree = "<group>"; };
-		1CDB34ED213E14320002FB45 /* NSKeyboardManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSKeyboardManager.m; sourceTree = "<group>"; };
 		1CDB34EE213E14320002FB45 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		1CDB34F0213E14320002FB45 /* YZHUITextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZHUITextView.h; sourceTree = "<group>"; };
 		1CDB34F1213E14320002FB45 /* YZHUITextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZHUITextView.m; sourceTree = "<group>"; };
@@ -144,6 +144,15 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		1C07DB312140C1BB00F4C337 /* YZHKeyboardManager */ = {
+			isa = PBXGroup;
+			children = (
+				1C07DB322140C1BB00F4C337 /* YZHKeyboardManager.h */,
+				1C07DB332140C1BB00F4C337 /* YZHKeyboardManager.m */,
+			);
+			path = YZHKeyboardManager;
+			sourceTree = "<group>";
+		};
 		1CB1422B21404892007CEBE7 /* YZHUIAlertView */ = {
 			isa = PBXGroup;
 			children = (
@@ -172,11 +181,11 @@
 		1CDB34C3213E139B0002FB45 /* YZHAudioManagerDemo */ = {
 			isa = PBXGroup;
 			children = (
+				1C07DB312140C1BB00F4C337 /* YZHKeyboardManager */,
 				1CB1422B21404892007CEBE7 /* YZHUIAlertView */,
 				1CDB352E213E16760002FB45 /* resources */,
 				1CDB34FB213E15DF0002FB45 /* Base(基础类别) */,
 				1CDB34E7213E14320002FB45 /* Macro.h */,
-				1CDB34EB213E14320002FB45 /* NSKeyboardManager */,
 				1CDB34EE213E14320002FB45 /* PrefixHeader.pch */,
 				1CDB34DA213E14320002FB45 /* YZHAudioManager */,
 				1CDB34E8213E14320002FB45 /* YZHUIButton */,
@@ -212,15 +221,6 @@
 				1CDB34EA213E14320002FB45 /* YZHUIButton.m */,
 			);
 			path = YZHUIButton;
-			sourceTree = "<group>";
-		};
-		1CDB34EB213E14320002FB45 /* NSKeyboardManager */ = {
-			isa = PBXGroup;
-			children = (
-				1CDB34EC213E14320002FB45 /* NSKeyboardManager.h */,
-				1CDB34ED213E14320002FB45 /* NSKeyboardManager.m */,
-			);
-			path = NSKeyboardManager;
 			sourceTree = "<group>";
 		};
 		1CDB34EF213E14320002FB45 /* YZHUITextView */ = {
@@ -383,6 +383,7 @@
 			files = (
 				1CDB3524213E15DF0002FB45 /* UIImage+Orientation.m in Sources */,
 				1CDB34F2213E14330002FB45 /* YZHAudioManager.m in Sources */,
+				1C07DB342140C1BB00F4C337 /* YZHKeyboardManager.m in Sources */,
 				1C01F967213F66CA00E080EE /* YZHAudioRecordView.m in Sources */,
 				1CDB3520213E15DF0002FB45 /* NSWeakProxy.m in Sources */,
 				1CDB34F9213E14330002FB45 /* YZHUITextView.m in Sources */,
@@ -405,7 +406,6 @@
 				1CDB352C213E15DF0002FB45 /* UIView+UIGestureRecognizer.m in Sources */,
 				1CDB351E213E15DF0002FB45 /* NSObject+KVO.m in Sources */,
 				1CDB352B213E15DF0002FB45 /* UITableViewCell+SeparatorLineInset.m in Sources */,
-				1CDB34F8213E14330002FB45 /* NSKeyboardManager.m in Sources */,
 				1CDB34F7213E14330002FB45 /* YZHUIButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

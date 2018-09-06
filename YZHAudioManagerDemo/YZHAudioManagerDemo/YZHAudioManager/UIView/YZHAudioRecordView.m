@@ -105,7 +105,7 @@
 {
     self.countDownLabel = [[UILabel alloc] init];
     self.countDownLabel.textColor = WHITE_COLOR;
-    self.countDownLabel.font = FONT(60);
+    self.countDownLabel.font = FONT(80);
     self.countDownLabel.textAlignment = NSTextAlignmentCenter;
     [self addSubview:self.countDownLabel];
 }
@@ -264,6 +264,7 @@
         _alertView.customContentAlertView = self;
         _alertView.coverColor = CLEAR_COLOR;
         _alertView.animateDuration = 0.0f;
+        _alertView.effectView.hidden = YES;
     }
     return _alertView;
 }

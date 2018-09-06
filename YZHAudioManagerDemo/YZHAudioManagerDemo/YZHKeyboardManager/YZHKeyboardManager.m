@@ -1,16 +1,18 @@
 //
-//  NSKeyboardManager.m
-//  易阅卷
+//  YZHKeyboardManager.m
+//  YZHKeyboardManagerDemo
 //
-//  Created by yuan on 2017/6/22.
-//  Copyright © 2017年 yuan. All rights reserved.
+//  Created by yuan on 2018/8/20.
+//  Copyright © 2018年 yuan. All rights reserved.
 //
 
-#import "NSKeyboardManager.h"
+#import "YZHKeyboardManager.h"
+#import <objc/runtime.h>
 
-//static NSKeyboardManager *_shareKeyboardManager_s=nil;
-
-@interface NSKeyboardManager ()
+/************************************************************
+ *YZHKeyboardManager ()
+ ************************************************************/
+@interface YZHKeyboardManager ()
 
 @property (nonatomic, assign) BOOL isSpecialFirstResponderView;
 
@@ -20,9 +22,13 @@
 /* <#注释#> */
 @property (nonatomic, strong) NSNotification *keyboardNotification;
 
+/* <#name#> */
+@property (nonatomic, assign) BOOL isKeyboardShowing;
+
 @end
 
-@implementation NSKeyboardManager
+
+@implementation YZHKeyboardManager
 
 -(instancetype)init
 {
@@ -36,6 +42,7 @@
 -(void)setUpDefault
 {
     self.isSpecialFirstResponderView = NO;
+    self.relatedShiftViewUseContentOffsetToShift = YES;
     [self _registerAllNotification:YES];
 }
 
@@ -67,6 +74,8 @@
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(_keyboardDidShow:) name:UIKeyboardDidShowNotification object:nil];
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(_keyboardDidHide:) name:UIKeyboardDidHideNotification object:nil];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(_keyboardWillChangeFrame:) name:UIKeyboardWillChangeFrameNotification object:nil];
     }
     else
     {
@@ -75,6 +84,8 @@
         
         [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardDidShowNotification object:nil];
         [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardDidHideNotification object:nil];
+        
+        [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillChangeFrameNotification object:nil];
     }
 }
 
@@ -102,63 +113,84 @@
     }
 }
 
--(BOOL)_doUpdateWithKeyboardFrame:(CGRect)keyboardFrame duration:(NSTimeInterval)duration isHide:(BOOL)isHide
+-(BOOL)_doUpdateWithKeyboardFrame:(CGRect)keyboardFrame duration:(NSTimeInterval)duration isShow:(BOOL)isShow
 {
     if (self.firstResponderView == nil) {
         return NO;
     }
     
-    if (self.willUpdateBlock) {
-        self.willUpdateBlock(self, self.keyboardNotification, !isHide);
-    }
-    
     CGRect firstResponderViewFrame = self.firstResponderView.frame;
     firstResponderViewFrame = [self.firstResponderView.superview convertRect:firstResponderViewFrame toView:[UIApplication sharedApplication].keyWindow];
     
-    void (^animateCompletionBlock)(BOOL finished) = ^(BOOL finished){
-//        if (isHide && self.didHideBlock) {
-//            self.didHideBlock(self);
-//        }
-        
-//        if (isHide) {
-//            if (self.didHideBlock) {
-//                self.didHideBlock(self);
-//            }
-//        }
-//        else {
-//            if (self.didShowBlock) {
-//                self.didShowBlock(self);
-//            }
-//        }
-    };
+    CGFloat diffY = keyboardFrame.origin.y - CGRectGetMaxY(firstResponderViewFrame) - self.keyboardMinTopToResponder;
     
-    CGFloat diffY = keyboardFrame.origin.y - CGRectGetMaxY(firstResponderViewFrame) - self.keyboardTopToResponder;
-//    NSLog(@"==========diffY=%f",diffY);
-    if (diffY > 0) {
-        if (isHide) {
-            [UIView animateWithDuration:duration animations:^{
-                self.relatedShiftView.transform = self.relatedShiftViewBeforeShowTransform;
-            } completion:animateCompletionBlock];
-        }
-        return YES;
+    if (self.willUpdateBlock) {
+        self.willUpdateBlock(self, self.keyboardNotification, diffY, isShow);
     }
     
-    CGFloat oldTranslationX = self.relatedShiftView.transform.tx;
-    CGFloat oldTranslationY = self.relatedShiftView.transform.ty;
-    CGFloat ty = oldTranslationY + diffY;
+//    NSLog(@"firstResponderViewFrame=%@",NSStringFromCGRect(firstResponderViewFrame));
     
-//    NSLog(@"============ty=%f,oldTranslationY=%f,thread=%@",ty,oldTranslationY,[NSThread currentThread]);
-    
-    [UIView animateWithDuration:duration animations:^{
-        self.relatedShiftView.transform = CGAffineTransformMakeTranslation(oldTranslationX, ty);
-    } completion:animateCompletionBlock];
-    
-    return YES;
+    if (self.shiftBlock) {
+        self.shiftBlock(self, self.keyboardNotification, diffY, isShow);
+        return YES;
+    }
+    else {
+        void (^animateCompletionBlock)(BOOL finished) = ^(BOOL finished){
+            if (self.completionBlock) {
+                self.completionBlock(self, isShow);
+            }
+        };
+        if ([self.relatedShiftView isKindOfClass:[UIScrollView class]] && self.relatedShiftViewUseContentOffsetToShift) {
+            UIScrollView *scrollView = (UIScrollView*)self.relatedShiftView;
+            CGPoint contentOffset = scrollView.contentOffset;
+            CGFloat offsetY = contentOffset.y - diffY;
+            offsetY = MAX(offsetY, 0);
+            CGFloat maxOffsetY = scrollView.contentSize.height - scrollView.bounds.size.height;
+            if (isShow) {
+                [scrollView setContentOffset:CGPointMake(contentOffset.x, offsetY)];
+            }
+            else {
+                if (contentOffset.y > maxOffsetY) {
+                    [scrollView setContentOffset:CGPointMake(contentOffset.x, maxOffsetY)];
+                }
+            }
+            animateCompletionBlock(YES);
+        }
+        else {
+//            NSLog(@"diffY=%f",diffY);
+            if (diffY > 0) {
+                if (!isShow) {
+                    [UIView animateWithDuration:duration animations:^{
+                        self.relatedShiftView.transform = self.relatedShiftViewBeforeShowTransform;
+                    } completion:animateCompletionBlock];
+                    return YES;
+                }
+                if (!self.firstResponderShiftToKeyboardMinTop) {
+                    return YES;
+                }
+            }
+            
+            CGFloat oldTranslationX = self.relatedShiftView.transform.tx;
+            CGFloat oldTranslationY = self.relatedShiftView.transform.ty;
+            CGFloat ty = oldTranslationY + diffY;
+//            NSLog(@"ty=%f",ty);
+            
+            [UIView animateWithDuration:duration animations:^{
+                self.relatedShiftView.transform = CGAffineTransformMakeTranslation(oldTranslationX, ty);
+            } completion:animateCompletionBlock];
+        }
+        return YES;        
+    }
 }
 
 #pragma mark firstResponder
 -(void)_didBecomeFirstResponder:(NSNotification*)notification
 {
+//    NSLog(@"%s,notification=%@",__FUNCTION__,notification);
+    if (self.becomeFirstResponderBlock) {
+        self.becomeFirstResponderBlock(self, notification);
+    }
+    
     if (self.isSpecialFirstResponderView && self.firstResponderView != nil) {
         goto _DID_BECOME_FIRST_RESPONDER_END;
     }
@@ -171,10 +203,10 @@ _DID_BECOME_FIRST_RESPONDER_END:
 
 -(void)_didResignFirstResponder:(NSNotification*)notification
 {
-//    if (self.isSpecialFirstResponderView) {
-//        return;
-//    }
-//    _firstResponderView = nil;
+//    NSLog(@"%s,notification=%@",__FUNCTION__,notification);
+    if (self.resignFirstResponderBlock) {
+        self.resignFirstResponderBlock(self, notification);
+    }
 }
 
 #pragma mark statusBarFrame
@@ -198,27 +230,26 @@ _DID_BECOME_FIRST_RESPONDER_END:
     [notification.userInfo[UIKeyboardFrameEndUserInfoKey] getValue:&keyboardFrame];
     
     if (show) {
-        CGRect keyboardBeginFrame = CGRectZero;
-        [notification.userInfo[UIKeyboardFrameBeginUserInfoKey] getValue:&keyboardBeginFrame];
-//        NSLog(@"begin.frame=%@,screenH=%f",NSStringFromCGRect(keyboardBeginFrame),SCREEN_HEIGHT);
-        if (keyboardBeginFrame.origin.y == SCREEN_HEIGHT) {
+        if (!self.isKeyboardShowing) {
             self.relatedShiftViewBeforeShowTransform = self.relatedShiftView.transform;
         }
         
         self.keyboardNotification = notification;
         
-        BOOL OK = [self _doUpdateWithKeyboardFrame:keyboardFrame duration:time isHide:NO];
+        BOOL OK = [self _doUpdateWithKeyboardFrame:keyboardFrame duration:time isShow:YES];
         
         if (OK) {
-            self.keyboardNotification = nil;
+            self.isKeyboardShowing = YES;
+//            self.keyboardNotification = nil;
         }
     }
     else {
         self.keyboardNotification = notification;
         
-        BOOL OK = [self _doUpdateWithKeyboardFrame:keyboardFrame duration:time isHide:YES];
+        BOOL OK = [self _doUpdateWithKeyboardFrame:keyboardFrame duration:time isShow:NO];
         
         if (OK) {
+            self.isKeyboardShowing = NO;
             self.keyboardNotification = nil;
             self.relatedShiftViewBeforeShowTransform = CGAffineTransformIdentity;
             
@@ -231,18 +262,18 @@ _DID_BECOME_FIRST_RESPONDER_END:
 
 -(void)_keyboardWillShow:(NSNotification*)notification
 {
-//    NSLog(@"notification=%@",notification);
+//    NSLog(@"%s,notification=%@",__FUNCTION__,notification);
     if (self.willShowBlock) {
         self.willShowBlock(self, notification);
     }
     
     [self _keyboardAction:notification show:YES];
-
+    
 }
 
 -(void)_keyboardWillHide:(NSNotification*)notification
 {
-//    NSLog(@"notification=%@",notification);
+//    NSLog(@"%s,notification=%@",__FUNCTION__,notification);
     if (self.willHideBlock) {
         self.willHideBlock(self, notification);
     }
@@ -251,7 +282,7 @@ _DID_BECOME_FIRST_RESPONDER_END:
 
 -(void)_keyboardDidShow:(NSNotification*)notification
 {
-//    NSLog(@"notification=%@",notification);
+//    NSLog(@"%s,notification=%@",__FUNCTION__,notification);
     if (self.didShowBlock) {
         self.didShowBlock(self, notification);
     }
@@ -259,10 +290,15 @@ _DID_BECOME_FIRST_RESPONDER_END:
 
 -(void)_keyboardDidHide:(NSNotification*)notification
 {
-//    NSLog(@"notification=%@",notification);
+//    NSLog(@"%s,notification=%@",__FUNCTION__,notification);
     if (self.didHideBlock) {
         self.didHideBlock(self, notification);
     }
+}
+
+-(void)_keyboardWillChangeFrame:(NSNotification*)notification
+{
+//    NSLog(@"%s,notification=%@",__FUNCTION__,notification);
 }
 
 -(void)dealloc
@@ -274,15 +310,12 @@ _DID_BECOME_FIRST_RESPONDER_END:
 
 
 
-
-
 /*****************************************************************************
- *NSShareKeyboardManager
+ *YZHShareKeyboardManager
  *****************************************************************************/
-static NSShareKeyboardManager *_shareKeyboardManager_s=nil;
+static YZHShareKeyboardManager *_shareKeyboardManager_s = nil;
 
-
-@implementation NSShareKeyboardManager
+@implementation YZHShareKeyboardManager
 
 +(instancetype)shareKeyboardManager
 {
@@ -296,17 +329,17 @@ static NSShareKeyboardManager *_shareKeyboardManager_s=nil;
 
 -(void)_setUpDefault
 {
-    _keyboardManager = [[NSKeyboardManager alloc] init];
+    _keyboardManager = [[YZHKeyboardManager alloc] init];
 }
 
 +(id)allocWithZone:(struct _NSZone *)zone
 {
-    return [NSShareKeyboardManager shareKeyboardManager];
+    return [YZHShareKeyboardManager shareKeyboardManager];
 }
 
 -(id)copyWithZone:(struct _NSZone *)zone
 {
-    return [NSShareKeyboardManager shareKeyboardManager];
+    return [YZHShareKeyboardManager shareKeyboardManager];
 }
 
 @end

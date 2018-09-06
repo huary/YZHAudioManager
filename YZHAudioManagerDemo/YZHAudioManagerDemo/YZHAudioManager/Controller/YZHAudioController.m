@@ -176,7 +176,7 @@
         NSTimeInterval diff = [now timeIntervalSinceDate:self.showDate];
         NSInteger countDown = ceil(self.maxRecordDuration - diff);
         
-        NSLog(@"countDown=%ld",countDown);
+//        NSLog(@"countDown=%ld",countDown);
         self.audioRecordView.countDownView.countDownLabel.text = NEW_STRING_WITH_FORMAT(@"%@",@(countDown));
 
         NSMutableDictionary *userInfo = [NSMutableDictionary dictionaryWithObject:@(countDown-1) forKey:COUNT_DOWN_KEY];
@@ -238,10 +238,18 @@
     [self dismiss];
 }
 
--(void)dismiss
+-(void)_dimissAction
 {
+    if (self.completionBlock) {
+        self.completionBlock(self);
+    }
     self.showDate = nil;
     [self _endTimer];
+}
+
+-(void)dismiss
+{
+    [self _dimissAction];
     [self.audioRecordView dismiss];
     _audioRecordView = nil;
 }
