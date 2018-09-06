@@ -11,12 +11,14 @@
 typedef NS_ENUM(NSInteger, NSButtonContentAlignment)
 {
     NSButtonContentAlignmentCenter  = 0,
+    //如下Left,Right和Up，Down进行或
     NSButtonContentAlignmentLeft    = (1 << 0),
     NSButtonContentAlignmentRight   = (1 << 1),
     NSButtonContentAlignmentUp      = (1 << 2),
     NSButtonContentAlignmentDown    = (1 << 3),
 };
 
+//指的是imageview和title的排版方式
 typedef NS_ENUM(NSInteger, NSButtonLayoutStyle)
 {
     NSButtonLayoutStyleMask           = 0X3,
@@ -62,6 +64,8 @@ typedef void(^YZHUIButtonActionBlock)(YZHUIButton *button);
 @property (nonatomic, copy) YZHUIButtonContinueTrackingBlock continueTrackingBlock;
 @property (nonatomic, copy) YZHUIButtonEndTrackingBlock endTrackingBlock;
 @property (nonatomic, copy) YZHUIButtonCancelTrackingBlock cancelTrackingBlock;
+
+-(void)setBackgroundColor:(UIColor *)backgroundColor forState:(UIControlState)state;
 
 -(void)addControlEvent:(UIControlEvents)controlEvents actionBlock:(YZHUIButtonActionBlock)actionBlock;
 

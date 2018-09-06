@@ -9,12 +9,82 @@
 #import "YZHUIButton.h"
 #import "Macro.h"
 
+/**********************************************************
+ *YZHUIButtonStateInfo
+ **********************************************************/
+@interface YZHUIButtonStateInfo : NSObject
+
+@property (nonatomic, strong) UIColor *backgroundColor;
+
+/* <#name#> */
+@property (nonatomic, assign) NSInteger state;
+
+@end
+
+@implementation YZHUIButtonStateInfo
+-(instancetype)initWithBackgroundColor:(UIColor*)backgroundColor state:(NSInteger)state
+{
+    self = [super init];
+    if (self) {
+        self.backgroundColor = backgroundColor;
+        self.state = state;
+    }
+    return self;
+}
+@end
+
+
+/**********************************************************
+ *YZHUIButtonStateInfo
+ **********************************************************/
 @interface YZHUIButton ()
 
 @property (nonatomic, copy) YZHUIButtonActionBlock actionBlock;
+
+/* <#注释#> */
+@property (nonatomic, strong) NSMutableDictionary<NSNumber*, UIColor*> *backgroundColorStateInfo;
+
 @end
 
 @implementation YZHUIButton
+
+-(instancetype)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+//        NSLog(@"init==============");
+        [self _addKVOForState:YES];
+    }
+    return self;
+}
+
+-(void)_addKVOForState:(BOOL)add
+{
+    if (add) {
+        [self addObserver:self forKeyPath:@"enabled" options:NSKeyValueObservingOptionNew context:nil];
+        [self addObserver:self forKeyPath:@"selected" options:NSKeyValueObservingOptionNew context:nil];
+        [self addObserver:self forKeyPath:@"highlighted" options:NSKeyValueObservingOptionNew context:nil];
+    }
+    else {
+        [self removeObserver:self forKeyPath:@"enabled"];
+        [self removeObserver:self forKeyPath:@"selected"];
+        [self removeObserver:self forKeyPath:@"highlighted"];
+    }
+}
+
+-(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context
+{
+    [self _updateBackgroundColorForState];
+}
+
+-(void)_updateBackgroundColorForState
+{
+    UIColor *backgroundColor = [self.backgroundColorStateInfo objectForKey:@(self.state)];
+    if (backgroundColor) {
+        [super setBackgroundColor:backgroundColor];
+    }
+}
+
 
 -(void)layoutSubviews
 {
@@ -49,7 +119,7 @@
     
     CGFloat itemSpaceV = 0;
     CGFloat itemSpaceH = 0;
-    
+        
     NSInteger layoutStyle = TYPE_AND(self.layoutStyle, NSButtonLayoutStyleCustomMask);
     if (layoutStyle) {
         if (layoutStyle == NSButtonLayoutStyleCustomRatio) {
@@ -196,6 +266,58 @@
     self.bounds = bounds;
 }
 
+//改变titleLabel或者imageView的backgroundColor会影响layout
+-(void)_forceUpdateLayout
+{
+    UIColor *backgroundColor = self.titleLabel.backgroundColor;
+    if (!backgroundColor) {
+        backgroundColor = CLEAR_COLOR;
+    }
+    self.titleLabel.backgroundColor = backgroundColor;
+    
+    backgroundColor = self.imageView.backgroundColor;
+    if (!backgroundColor) {
+        backgroundColor = CLEAR_COLOR;
+    }
+    self.imageView.backgroundColor = backgroundColor;
+}
+
+-(void)setBackgroundColor:(UIColor *)backgroundColor
+{
+    [super setBackgroundColor:backgroundColor];
+    [self setBackgroundColor:backgroundColor forState:UIControlStateNormal];
+}
+
+-(void)setTitle:(NSString *)title forState:(UIControlState)state
+{
+    [super setTitle:title forState:state];
+    [self _forceUpdateLayout];
+}
+
+-(void)setImage:(UIImage *)image forState:(UIControlState)state
+{
+    [super setImage:image forState:state];
+    [self _forceUpdateLayout];
+}
+
+-(NSMutableDictionary<NSNumber*, UIColor*>*)backgroundColorStateInfo
+{
+    if (!_backgroundColorStateInfo) {
+        _backgroundColorStateInfo = [NSMutableDictionary dictionary];
+    }
+    return _backgroundColorStateInfo;
+}
+
+-(void)setBackgroundColor:(UIColor *)backgroundColor forState:(UIControlState)state
+{
+    if (backgroundColor) {
+        [self.backgroundColorStateInfo setObject:backgroundColor forKey:@(state)];
+    }
+    else {
+        [self.backgroundColorStateInfo removeObjectForKey:@(state)];
+    }
+    [self _updateBackgroundColorForState];
+}
 
 -(void)addControlEvent:(UIControlEvents)controlEvents actionBlock:(YZHUIButtonActionBlock)actionBlock
 {
@@ -239,5 +361,10 @@
     if (self.actionBlock) {
         self.actionBlock(titleButton);
     }
+}
+
+-(void)dealloc
+{
+    [self _addKVOForState:NO];
 }
 @end

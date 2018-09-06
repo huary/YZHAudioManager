@@ -10,6 +10,28 @@
 
 #define USE_TEXTVIEW_TEXT_AS_PLACEHOLDER    (0)
 
+/****************************************************
+ *YZHUITextViewLimit
+ ****************************************************/
+@implementation YZHUITextViewLimit
+
+-(instancetype)initWithLimitType:(NSTextViewLimitType)limitType limitValue:(NSNumber*)limitValue
+{
+    self = [super init];
+    if (self) {
+        self.limitType = limitType;
+        self.limitValue = limitValue;
+    }
+    return self;
+}
+
+@end
+
+
+
+/****************************************************
+ *YZHUITextView
+ ****************************************************/
 #if USE_TEXTVIEW_TEXT_AS_PLACEHOLDER
 @interface YZHUITextView ()
 /* <#注释#> */
@@ -33,18 +55,12 @@
 /* <#注释#> */
 @property (nonatomic, assign) CGSize lastContentSize;
 
+/* <#name#> */
+@property (nonatomic, assign) CGFloat normalHeight;
+
 @end
 
 @implementation YZHUITextView
-
--(instancetype)init
-{
-    self = [super init];
-    if (self) {
-        [self _setupDefaultValue];
-    }
-    return self;
-}
 
 -(instancetype)initWithFrame:(CGRect)frame
 {
@@ -62,6 +78,16 @@
 #endif
     [self _registNotification:YES];
     self.lastContentSize = self.contentSize;
+    self.normalHeight = -1;
+    self.maxLimit = nil;
+    [self _initNormalHeight];
+}
+
+-(void)_initNormalHeight
+{
+    if (self.normalHeight < 0 && self.bounds.size.height > 0) {
+        self.normalHeight = self.bounds.size.height;
+    }
 }
 
 -(void)layoutSubviews
@@ -70,6 +96,8 @@
 #if !USE_TEXTVIEW_TEXT_AS_PLACEHOLDER
     self.placeHolderTextView.frame = self.bounds;
 #endif
+    [self _initNormalHeight];
+    
     CGFloat w = self.contentSize.width;
     CGFloat h = MAX(self.contentSize.height, self.bounds.size.height);
     [self _textContainerView].frame = CGRectMake(0, 0, w, h);
@@ -172,17 +200,13 @@
 
 -(void)_didChangeTextAction:(NSNotification*)notification
 {
-//    NSLog(@"didChangeText,notification=%@,userInfo=%@",notification,notification.userInfo);
     UITextView *textView = (UITextView*)notification.object;
     self.inputText = textView.text;
     self.inputAttributedText = textView.attributedText;
-//    NSRange range = self.selectedRange;
-//    [self scrollRangeToVisible:range];
 }
 
 -(void)_didEndEditingAction:(NSNotification*)notification
 {
-//    NSLog(@"didEndEditing,notification=%@",notification);
     NSAttributedString *oldAttributedPlaceholder = _attributedPlaceholder;
     self.placeholder = _placeholder;
     if (IS_AVAILABLE_ATTRIBUTEDSTRING(oldAttributedPlaceholder)) {
@@ -242,13 +266,13 @@
 -(void)setText:(NSString *)text
 {
     [super setText:text];
-    [self _hiddenPlaceholderTextView];
+    [self _updateTextAction];
 }
 
 -(void)setAttributedText:(NSAttributedString *)attributedText
 {
     [super setAttributedText:attributedText];
-    [self _hiddenPlaceholderTextView];
+    [self _updateTextAction];
 }
 
 -(void)_updatePlaceHolder
@@ -299,19 +323,52 @@
 -(void)_didChangeTextAction:(NSNotification*)notification
 {
     if (notification.object == self) {
-        [self _hiddenPlaceholderTextView];
+        [self _updateTextAction];
+    }
+}
+
+-(void)_updateTextAction
+{
+    [self _hiddenPlaceholderTextView];
+
+    CGSize textSize = [self sizeThatFits:self.contentSize];
+    if (self.textChangeBlock) {
+        self.textChangeBlock(self, textSize);
         
-        CGSize textSize = [self sizeThatFits:self.contentSize];
-        if (self.textChangeBlock) {
-            self.textChangeBlock(self, textSize);
-            
+    }
+    if (!CGSizeEqualToSize(self.textSize, textSize)) {
+        if (self.textSizeChangeBlock) {
+            self.textSizeChangeBlock(self, textSize);
         }
-        if (!CGSizeEqualToSize(self.textSize, textSize)) {
-            if (self.textSizeChangeBlock) {
-                self.textSizeChangeBlock(self, textSize);
+    }
+    self.textSize = textSize;
+    
+    if (self.maxLimit) {
+        CGRect frame = self.frame;
+        CGRect oldFrame = frame;
+        if (self.maxLimit.limitType == NSTextViewLimitTypeHeight) {
+            CGFloat limitHeight = [self.maxLimit.limitValue floatValue];
+            CGFloat height = MAX(self.normalHeight, textSize.height);
+            CGFloat maxHeight = MAX(self.normalHeight, limitHeight);
+            height = MIN(maxHeight, height);
+            if (height > 0) {
+                frame.size.height = height;
             }
         }
-        self.textSize = textSize;
+        else if (self.maxLimit.limitType == NSTextViewLimitTypeLines) {
+            NSInteger limitCnt = [self.maxLimit.limitValue integerValue];
+            NSInteger lineCnt = [self textLines];
+            if (lineCnt > 0 && lineCnt <= limitCnt && limitCnt > 0) {
+                CGFloat height = MAX(self.normalHeight, textSize.height);
+                frame.size.height = height;
+            }
+        }
+        if (!CGRectEqualToRect(frame, oldFrame)) {
+            self.frame = frame;
+            if (self.changeFrameBlock) {
+                self.changeFrameBlock(self, oldFrame, frame);
+            }
+        }
     }
 }
 
@@ -343,6 +400,27 @@
     [super setContentOffset:contentOffset];
 }
 
+-(CGFloat)normalHeight
+{
+    return _normalHeight;
+}
+
+-(NSInteger)textLineHeight
+{
+    CGFloat lineHeight = self.font.lineHeight;
+    return lineHeight;
+}
+
+-(NSInteger)textLines
+{
+    CGFloat lineHeight = [self textLineHeight];
+    NSInteger lineCnt = 0;
+    if (lineHeight > 0) {
+        CGSize textSize = [self sizeThatFits:self.contentSize];
+        lineCnt = (textSize.height - self.textContainerInset.top - self.textContainerInset.bottom) / lineHeight;
+    }
+    return lineCnt;
+}
 
 -(void)dealloc
 {
