@@ -25,9 +25,6 @@
 /* <#name#> */
 @property (nonatomic, strong) NSDate *showDate;
 
-/* <#name#> */
-//@property (nonatomic, assign) BOOL isCountDowning;
-
 @end
 
 @implementation YZHAudioController
@@ -59,7 +56,6 @@
 
 -(void)showWithState:(YZHAudioRecordState)state title:(NSString*)title
 {
-    NSLog(@"state=%ld",state);
     [self.audioRecordView.alertView alertShowInView:nil];
     [self updateRecordViewWithState:state title:title];
     if (state == YZHAudioRecordStateRecording) {
@@ -104,6 +100,11 @@
         [self _updateRecordeViewWithState:YZHAudioRecordStateRecording];
         [self.audioRecordView.powerView updateWithPower:power];
     }
+}
+
+-(YZHAudioRecordState)recordState
+{
+    return self.state;
 }
 
 -(void)_doEndAction:(NSTimeInterval)delay
@@ -169,8 +170,6 @@
         self.audioRecordView.powerView.hidden = YES;
         self.audioRecordView.normalView.hidden = YES;
         self.audioRecordView.countDownView.hidden = NO;
-        
-//        self.isCountDowning = YES;
         
         NSDate *now = [NSDate date];
         NSTimeInterval diff = [now timeIntervalSinceDate:self.showDate];

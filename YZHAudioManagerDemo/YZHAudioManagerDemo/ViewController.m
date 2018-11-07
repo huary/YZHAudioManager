@@ -108,13 +108,18 @@ static CGFloat showRemRecorderDuaration_s = 3.0;
 -(void)_endTrackingAction:(UIButton*)button touch:(UITouch*)touch event:(UIEvent*)event
 {
     if ([[YZHAudioManager shareAudioManager] recordDuration] < minRecorderFileDuration_s) {
+        [YZHAudioManager shareAudioManager].delegate = nil;
         [self.audioController updateRecordViewWithState:YZHAudioRecordStateTooShort title:NSLOCAL_STRING(@"录音时间太短")];
     }
     else {
+        if (self.audioController.recordState == YZHAudioRecordStateCancel) {
+            [YZHAudioManager shareAudioManager].delegate = nil;
+        }
         [self.audioController updateRecordViewWithState:YZHAudioRecordStateEnd title:nil];
     }
     [[YZHAudioManager shareAudioManager] endRecord];
     button.layer.borderColor = RGB_WITH_INT_WITH_NO_ALPHA(0X666666).CGColor;
+    [YZHAudioManager shareAudioManager].delegate = self;
 }
 
 

@@ -156,6 +156,9 @@ static YZHAudioManager *shareAudioManager_s = nil;
     if ([self.delegate respondsToSelector:@selector(audioManager:endRecordFilePath:duration:)]) {
         [self.delegate audioManager:self endRecordFilePath:self.audioRecordeFilePath duration:self.currentDuration];
     }
+    else {
+        [[NSFileManager defaultManager] removeItemAtPath:self.audioRecordeFilePath error:NULL];
+    }
 }
 
 -(NSTimeInterval)recordDuration

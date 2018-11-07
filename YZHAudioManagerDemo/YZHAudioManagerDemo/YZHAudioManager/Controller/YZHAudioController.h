@@ -44,6 +44,8 @@ typedef void(^YZHAudioControllerCompletionBlock)(YZHAudioController *audioContro
  */
 -(void)updateRecordViewWithPower:(CGFloat)power;
 
+-(YZHAudioRecordState)recordState;
+
 -(void)dismiss;
 
 @end
