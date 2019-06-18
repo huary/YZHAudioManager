@@ -138,11 +138,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "YZHAudioManagerDemo/ViewController.m"
-            timestampString = "563265751.691911"
+            timestampString = "575267940.258689"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "116"
-            endingLineNumber = "116"
+            startingLineNumber = "117"
+            endingLineNumber = "117"
             landmarkName = "-_endTrackingAction:touch:event:"
             landmarkType = "7">
          </BreakpointContent>

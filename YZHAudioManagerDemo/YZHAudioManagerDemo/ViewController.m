@@ -41,9 +41,9 @@ static CGFloat showRemRecorderDuaration_s = 3.0;
 //    NSLog(@"screenBounds=%@",NSStringFromCGRect(SCREEN_BOUNDS));
     
     CGFloat x = 20;
-    CGFloat y = SCREEN_HEIGHT - 80;
+    CGFloat h = 100;
+    CGFloat y = SCREEN_HEIGHT - h;
     CGFloat w = SCREEN_WIDTH - 2 * x;
-    CGFloat h = 40;
     UIColor *color = RGB_WITH_INT_WITH_NO_ALPHA(0X666666);
     YZHUIButton *recodeBtn = [YZHUIButton buttonWithType:UIButtonTypeCustom];
     recodeBtn.frame = CGRectMake(x, y, w, h);
@@ -74,6 +74,7 @@ static CGFloat showRemRecorderDuaration_s = 3.0;
 
 -(BOOL)_beginTrackingAction:(UIButton*)button touch:(UITouch*)touch event:(UIEvent*)event
 {
+    NSLog(@"%s",__FUNCTION__);
     CGPoint pt = [touch locationInView:button];
     if (!CGRectContainsPoint(button.bounds, pt)) {
         return NO;
@@ -167,6 +168,11 @@ static CGFloat showRemRecorderDuaration_s = 3.0;
 
 -(void)audioManager:(YZHAudioManager *)audioManager endPlayURL:(NSURL *)URL duration:(NSTimeInterval)duration
 {
+}
+
+-(UIRectEdge)preferredScreenEdgesDeferringSystemGestures
+{
+    return UIRectEdgeBottom;
 }
 
 @end

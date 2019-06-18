@@ -171,6 +171,7 @@ static YZHAudioManager *shareAudioManager_s = nil;
 
 -(void)playAudioWithURL:(NSURL*)url
 {
+    [self endPlay];
     self.audioPlayURL = url;
     [self.audioPlayer play];
 }
